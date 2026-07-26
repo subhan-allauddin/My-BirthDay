@@ -8,36 +8,34 @@ const projects = [
     title: "Music E-Commerce Web",
     description:
       "Responsive music store interface replica with sleek modern audio component design and 100% mobile compatibility.",
-    tags: ["React.js", "JavaScript", "CSS3"],
+    tags: ["Next.js","React.js", "JavaScript", "CSS3", "Acerternity UI", "HTML"],
     github: "https://github.com/subhan-allauddin/Next-Project-One",
     demo: "https://next-project-one-ten.vercel.app",
+  },
+    {
+    title: "Electrolysis Template",
+    description:
+      "This is my school project This template show the concept of elctrolysis.",
+    tags: ["Next.js", "Prisma", "MongoDB", "Tailwind CSS"],
+    github: "https://github.com/subhan-allauddin/my-birthday",
+    demo: "https://electrolysis.vercel.app",
   },
    {
     title: "Snake Game",
     description:
-      "A real-time messaging application connecting users in rooms instantly with bidirectional WebSocket communication.",
-    tags: ["React.js", "Socket.io", "Node.js", "Express"],
+      "A Simple Snake.",
+    tags: ["HTML5", "CSS3", "Vanilla Js"],
     github: "https://github.com/subhan-allauddin/Snake-games",
     demo: "https://snake-games-xi.vercel.app",
   },
-  {
-    title: "Birthday Celebration App",
-    description:
-      "Full-stack web application featuring real-time community wishes stored dynamically in MongoDB using Prisma & Next.js App Router.",
-    tags: ["Next.js", "Prisma", "MongoDB", "Tailwind CSS"],
-    github: "https://github.com/subhan-allauddin/my-birthday",
-    demo: "https://portfolio-weld-mu-79.vercel.app",
-  },
- 
-  {
+    {
     title: "Daraz App Clone",
     description:
-      "Full e-commerce user interface replica featuring product listings, responsive grid layouts, and cart UI interaction.",
-    tags: ["React.js", "Tailwind CSS", "Redux"],
+      "Full e-commerce user interface replica featuring product listings, responsive grid layouts, and cart UI interaction. This is my First E-commerce Website Clone.",
+    tags: ["HTML5, CSS3, BootsTrap5, JavaScript"],
     github: "https://github.com/subhan-allauddin",
     demo: "#",
   },
- 
 ];
 
 export default function ProjectsSection() {
@@ -62,7 +60,6 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <motion.div
@@ -75,7 +72,6 @@ export default function ProjectsSection() {
               className="group relative flex flex-col justify-between rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-xl backdrop-blur-2xl transition-all hover:border-violet-500/40 hover:bg-white/[0.07]"
             >
               <div>
-                {/* Header Icon + External Links */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-500/20 bg-violet-500/10 text-violet-400">
                     <FolderGit2 className="h-6 w-6" />
@@ -87,7 +83,6 @@ export default function ProjectsSection() {
                       rel="noreferrer"
                       className="text-white/60 transition hover:text-white"
                     >
-                      {/* <Github className="h-5 w-5" /> */}
                     </a>
                     {project.demo !== "#" && (
                       <a
@@ -102,7 +97,6 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Title & Description */}
                 <h3 className="text-xl font-bold text-white group-hover:text-violet-300 transition-colors">
                   {project.title}
                 </h3>
@@ -111,7 +105,6 @@ export default function ProjectsSection() {
                 </p>
               </div>
 
-              {/* Tech Stack Tags */}
               <div className="mt-8 flex flex-wrap gap-2 pt-4 border-t border-white/5">
                 {project.tags.map((tag, tagIndex) => (
                   <span

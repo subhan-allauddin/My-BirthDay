@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, CalendarDays, Heart, FolderGit2 } from "lucide-react";
+import { ArrowRight, Sparkles, CalendarDays, Heart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
-import InputWishModal from "./InputWishModal"; // Modal component import
+import InputWishModal from "./InputWishModal"; 
+import { triggerConfetti } from "@/lib/confetti";
 
 type TypewriterProps = {
   titles: string[];
@@ -50,20 +51,27 @@ export function Typewriter({
 }
 
 export default function HeroSection() {
+  
+  useEffect(() => {
+    
+    const timer = setTimeout(() => {
+      triggerConfetti();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleWishClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    // 1. Smooth scroll to the wishes section
     document.getElementById("wishes")?.scrollIntoView({ behavior: "smooth" });
 
-    // 2. Open the wish input modal
     setIsModalOpen(true);
   };
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
-      {/* Background glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 -top-32 h-72 w-72 rounded-full bg-violet-600/30 blur-3xl" />
         <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
@@ -71,12 +79,10 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.15),transparent_35%),radial-gradient(circle_at_center,rgba(14,165,233,0.08),transparent_30%)]" />
       </div>
 
-      {/* Grid overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[72px_72px] opacity-20" />
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-20 sm:px-10 lg:px-16">
         <div className="grid w-full items-center gap-14 lg:grid-cols-2">
-          {/* Left content */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -147,7 +153,6 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right visual card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -199,7 +204,6 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Floating badges */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -219,7 +223,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Input Wish Modal Popup */}
       <InputWishModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

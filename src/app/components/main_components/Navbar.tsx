@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Navbar() {
   const handleOpenNewPage = (url: string) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  // Smooth scroll handler function
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -37,9 +34,7 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Right: Navigation Links */}
         <div className="flex items-center gap-6 sm:gap-8">
-          {/* Home Scroll To Top */}
           <a
             href="#"
             onClick={(e) => {
@@ -51,7 +46,6 @@ export default function Navbar() {
             Home
           </a>
 
-          {/* Scroll down to #journey */}
           <a
             href="#journey"
             onClick={(e) => handleScroll(e, "journey")}
@@ -60,7 +54,6 @@ export default function Navbar() {
             Coding Journey
           </a>
 
-          {/* Scroll down to #projects */}
           <a
             href="#projects"
             onClick={(e) => handleScroll(e, "projects")}
@@ -69,7 +62,6 @@ export default function Navbar() {
             Projects
           </a>
 
-          {/* Scroll down to #wishes */}
           <a
             href="#wishes"
             onClick={(e) => handleScroll(e, "wishes")}
@@ -78,7 +70,6 @@ export default function Navbar() {
             Wishes
           </a>
 
-          {/* External Link via Portfolio Button [cite: 3] */}
           <button
             type="button"
             onClick={() =>

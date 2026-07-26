@@ -1,6 +1,3 @@
-// Optional: Add social icons imports if uncommented
-// import { Github, Linkedin } from "lucide-react";
-
 export default function FooterSection() {
   return (
     <footer className="relative border-t border-white/10 bg-[#03050D] py-10 text-white/60">
@@ -20,25 +17,6 @@ export default function FooterSection() {
           <span className="font-medium text-cyan-400">Prisma</span> &{" "}
           <span className="font-medium text-emerald-400">MongoDB</span>
         </div>
-
-        {/* <div className="flex items-center gap-4">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white/70 transition hover:border-white/20 hover:text-white"
-          >
-            <Github className="h-4 w-4" />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white/70 transition hover:border-white/20 hover:text-white"
-          >
-            <Linkedin className="h-4 w-4" />
-          </a>
-        </div> */}
       </div>
     </footer>
   );

@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-// Force Next.js to treat this API route dynamically (prevents build-time prerendering)
 export const dynamic = "force-dynamic";
 
-// POST: Save a new wish
 export async function POST(req: Request) {
   try {
     const { name, message } = await req.json();
@@ -30,7 +28,6 @@ export async function POST(req: Request) {
   }
 }
 
-// GET: Fetch all wishes
 export async function GET() {
   try {
     const wishes = await prisma.wish.findMany({

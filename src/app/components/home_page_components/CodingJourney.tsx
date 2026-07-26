@@ -27,7 +27,7 @@ const journeySteps = [
   },
   {
     year: "2026 - Present",
-    title: " I am working on real-world project that solves a problem in future.",
+    title: "Learning Prompt Engineering at BanoQabil 5.0 Session.",
     description: "Learning Python, Daily Practice Of Logic Building and DSA In Leetcode,Learned NoSQL and SQL DataBases and Prisma also Explore AI Enginnering and BackEnd Development.",
     icon: Rocket,
     color: "from-emerald-500 to-teal-500",
@@ -55,7 +55,6 @@ export default function CodingJourney() {
           </p>
         </div>
 
-        {/* Timeline Container */}
         <div className="relative border-l border-white/10 ml-4 md:ml-36 space-y-12">
           {journeySteps.map((step, index) => {
             const Icon = step.icon;
@@ -68,17 +67,16 @@ export default function CodingJourney() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative pl-8 md:pl-12 group"
               >
-                {/* Node */}
+                
                 <div className={`absolute -left-4.25 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-r ${step.color} text-white shadow-lg shadow-violet-500/20 group-hover:scale-110 transition-transform`}>
                   <Icon className="h-4 w-4" />
                 </div>
 
-                {/* Year Label */}
+                
                 <div className="hidden md:block absolute -left-36 top-2.5 text-xs font-bold text-violet-400 tracking-wider">
                   {step.year}
                 </div>
 
-                {/* Content Card */}
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:border-violet-500/30 hover:bg-white/[0.07]">
                   <span className="md:hidden inline-block mb-2 text-xs font-bold text-violet-400">
                     {step.year}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles, X, Send, User, MessageSquareQuote } from "lucide-react";
+import { triggerConfetti } from "@/lib/confetti";
 
 interface InputWishModalProps {
   isOpen: boolean;
@@ -21,46 +22,25 @@ export default function InputWishModal({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !message.trim()) return;
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  try {
+    const res = await fetch("/api/wishes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, message }),
+    });
 
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/wishes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, message }),
-      });
-
-      const resData = await response.json();
-
-      if (!response.ok) {
-        throw new Error(resData.error || "Failed to post wish");
-      }
-
-      setIsSubmitted(true);
-
-      // Trigger callback to update the UI immediately
-      if (onWishCreated) {
-        onWishCreated(resData.data);
-      }
-
-      // Reset form and close modal
-      setTimeout(() => {
-        setName("");
-        setMessage("");
-        setIsSubmitted(false);
-        onClose();
-      }, 1500);
-    } catch (err: any) {
-      setError(err.message || "Something went wrong.");
-    } finally {
-      setIsSubmitting(false);
+    if (res.ok) {
+      triggerConfetti();
+      
+      onClose();
     }
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <AnimatePresence>

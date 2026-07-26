@@ -80,7 +80,6 @@ const fetchWishes = async () => {
           </button>
         </div>
 
-        {/* Wishes Display Grid */}
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
@@ -122,12 +121,11 @@ const fetchWishes = async () => {
         )}
       </div>
 
-      {/* Modal Popup */}
       <InputWishModal
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
-          fetchWishes(); // Wish send hone ke baad wishes list refresh karega
+          fetchWishes(); 
         }}
       />
     </section>
