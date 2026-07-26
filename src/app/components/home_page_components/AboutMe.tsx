@@ -88,7 +88,7 @@ export default function AboutMe() {
               <Award className="h-5 w-5 sm:h-6 sm:w-6 text-violet-400 shrink-0" />
               <div>
                 <p className="text-[10px] sm:text-xs text-white/50">Certification</p>
-                <p className="text-xs sm:text-sm font-semibold text-white">Ranked #1 React Dev</p>
+                <p className="text-xs sm:text-sm font-semibold text-white">Ranked #1 Website Development at Utech</p>
               </div>
             </div>
 
