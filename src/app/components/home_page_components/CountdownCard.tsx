@@ -61,7 +61,7 @@ export default function CountdownCard({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-2xl sm:p-6"
+        className="mx-auto max-w-5xl rounded-4xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-2xl sm:p-6"
       >
         <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0B1020]/80 p-6 sm:p-8">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.18),transparent_35%),radial-gradient(circle_at_top_right,rgba(6,182,212,0.14),transparent_30%)]" />

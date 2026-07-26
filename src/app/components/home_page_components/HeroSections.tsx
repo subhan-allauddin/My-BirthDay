@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, CalendarDays, Heart } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { ArrowRight, Sparkles, CalendarDays, Heart, FolderGit2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
+import InputWishModal from "./InputWishModal"; // Modal component import
 
 type TypewriterProps = {
   titles: string[];
@@ -27,7 +28,6 @@ export function Typewriter({
   useEffect(() => {
     if (!el.current) return;
 
-    // Typed.js instance initialize
     const typed = new Typed(el.current, {
       strings: titles,
       typeSpeed: typeSpeed,
@@ -50,6 +50,17 @@ export function Typewriter({
 }
 
 export default function HeroSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleWishClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // 1. Smooth scroll to the wishes section
+    document.getElementById("wishes")?.scrollIntoView({ behavior: "smooth" });
+
+    // 2. Open the wish input modal
+    setIsModalOpen(true);
+  };
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
       {/* Background glows */}
@@ -63,7 +74,7 @@ export default function HeroSection() {
       {/* Grid overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[72px_72px] opacity-20" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-16 sm:px-10 lg:px-16">
+      <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 py-20 sm:px-10 lg:px-16">
         <div className="grid w-full items-center gap-14 lg:grid-cols-2">
           {/* Left content */}
           <motion.div
@@ -77,36 +88,41 @@ export default function HeroSection() {
               Celebration Page • 28 July
             </div>
 
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl min-h-[120px] sm:min-h-[160px]">
               <Typewriter
                 titles={["Abdus Subhan Allauddin", "Front End Developer"]}
                 prefixText="I am "
-                typeSpeed={60}
-                backSpeed={40}
+                typeSpeed={90}
+                backSpeed={80}
                 backDelay={1000}
                 loop={true}
               />
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
-              A personal space to celebrate my journey, memories, growth, and
+              A personal space to celebrate my journey, achievements, growth, and
               the moments that make this birthday special.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href="#wishes"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3.5 text-sm font-medium text-white shadow-[0_0_30px_rgba(124,58,237,0.35)] transition hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(124,58,237,0.45)]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3.5 text-sm font-medium text-white shadow-[0_0_30px_rgba(124,58,237,0.35)] transition hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(124,58,237,0.45)] cursor-pointer"
+                onClick={handleWishClick}
               >
                 Leave a Wish
                 <ArrowRight className="h-4 w-4" />
               </a>
 
               <a
-                href="#memories"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-white/90 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10"
+                href="#wishes"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("wishes")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-white/90 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10 cursor-pointer"
               >
-                View Memories
+                View Wishes
               </a>
             </div>
 
@@ -138,7 +154,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             className="relative mx-auto w-full max-w-xl"
           >
-            <div className="absolute -inset-6 rounded-4xl bg-linear-to-r from-violet-600/20 via-cyan-500/10 to-fuchsia-600/20 blur-2xl" />
+            <div className="absolute -inset-6 rounded-4xl bg-gradient-to-r from-violet-600/20 via-cyan-500/10 to-fuchsia-600/20 blur-2xl" />
 
             <div className="relative rounded-4xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-2xl">
               <div className="rounded-3xl border border-white/10 bg-[#0B1020]/80 p-6">
@@ -156,28 +172,28 @@ export default function HeroSection() {
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/8 to-white/3 p-5">
+                  <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-5">
                     <p className="text-sm text-white/55">Wishes</p>
                     <p className="mt-2 text-3xl font-bold">∞</p>
                     <p className="mt-1 text-sm text-white/50">
-                      Friends and family messages
+                      Community & friends
                     </p>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/8 to-white/3 p-5">
-                    <p className="text-sm text-white/55">Memories</p>
-                    <p className="mt-2 text-3xl font-bold">24+</p>
+                  <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-5">
+                    <p className="text-sm text-white/55">Projects</p>
+                    <p className="mt-2 text-3xl font-bold">5+</p>
                     <p className="mt-1 text-sm text-white/50">
-                      Moments to explore
+                      Web apps developed
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-white/10 bg-linear-to-r from-violet-600/20 via-fuchsia-500/10 to-cyan-500/20 p-5">
+                <div className="mt-4 rounded-2xl border border-white/10 bg-gradient-to-r from-violet-600/20 via-fuchsia-500/10 to-cyan-500/20 p-5">
                   <p className="text-sm text-white/60">Message</p>
                   <p className="mt-2 text-base leading-7 text-white/90">
-                    “A modern celebration page built with Next.js, Prisma,
-                    MongoDB, and authentication.”
+                    “A modern celebration page built with Next.js App Router, Prisma,
+                    MongoDB, and Tailwind CSS.”
                   </p>
                 </div>
               </div>
@@ -202,6 +218,12 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Input Wish Modal Popup */}
+      <InputWishModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
