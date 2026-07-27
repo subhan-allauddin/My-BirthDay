@@ -6,13 +6,11 @@ import { Sparkles, Code2, LaptopMinimalCheck, Award, ExternalLink } from "lucide
 export default function AboutMe() {
   return (
     <section id="about" className="relative w-full bg-[#050816] py-12 sm:py-20 text-white overflow-hidden">
-      {/* Background Glows */}
       <div className="pointer-events-none absolute left-1/4 top-1/2 -translate-y-1/2 h-60 w-60 sm:h-80 sm:w-80 rounded-full bg-violet-600/10 blur-[90px] sm:blur-[120px]" />
       <div className="pointer-events-none absolute right-1/4 bottom-10 h-60 w-60 sm:h-80 sm:w-80 rounded-full bg-cyan-500/10 blur-[90px] sm:blur-[120px]" />
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-8 lg:px-10">
         
-        {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-3.5 py-1.5 text-xs text-violet-300 backdrop-blur-xl">
             <Sparkles className="h-3.5 w-3.5 text-violet-400" />
@@ -26,7 +24,6 @@ export default function AboutMe() {
           </p>
         </div>
 
-        {/* Main Content Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +31,6 @@ export default function AboutMe() {
           transition={{ duration: 0.6 }}
           className="rounded-3xl sm:rounded-[2.5rem] border border-white/10 bg-white/5 p-5 sm:p-10 lg:p-12 shadow-2xl backdrop-blur-2xl relative"
         >
-          {/* Story Paragraphs */}
           <div className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-white/80">
             <p>
               My coding journey started with guidance from my elder brother, who introduced me to web development through <span className="text-violet-300 font-semibold">Utech Digital Education</span>. Starting from the basics of HTML, CSS, and JavaScript, I built my foundation through interactive projects like games and calculators.
@@ -49,7 +45,6 @@ export default function AboutMe() {
             </p>
           </div>
 
-          {/* Social / Portfolio Links */}
           <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 pt-6 border-t border-white/10">
             <a
               href="https://www.linkedin.com/in/muhammad-subhan-allauddin-a43127283/"
@@ -74,7 +69,6 @@ export default function AboutMe() {
             </a>
           </div>
 
-          {/* Key Achievements Grid */}
           <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-white/10">
             <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/5">
               <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400 shrink-0" />

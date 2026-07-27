@@ -63,11 +63,9 @@ export default function CountdownCard({
         className="mx-auto max-w-5xl rounded-3xl sm:rounded-4xl border border-white/10 bg-white/5 p-3 sm:p-6 shadow-2xl backdrop-blur-2xl"
       >
         <div className="relative overflow-hidden rounded-2xl sm:rounded-[1.6rem] border border-white/10 bg-[#0B1020]/80 p-4 sm:p-8">
-          {/* Background Gradient */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.18),transparent_35%),radial-gradient(circle_at_top_right,rgba(6,182,212,0.14),transparent_30%)]" />
 
           <div className="relative">
-            {/* Header: Stacks vertically on mobile, row on tablet/desktop */}
             <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <p className="text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] text-white/50 uppercase">
@@ -84,7 +82,6 @@ export default function CountdownCard({
               </div>
             </div>
 
-            {/* Grid Layout: 2 columns on small screens, 4 on desktop */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
               {items.map((item) => (
                 <motion.div
@@ -105,7 +102,6 @@ export default function CountdownCard({
               ))}
             </div>
 
-            {/* Bottom Message */}
             <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 px-4 py-3 sm:px-5 sm:py-4 text-center text-xs sm:text-sm text-white/70">
               The celebration starts when this timer hits zero.
             </div>

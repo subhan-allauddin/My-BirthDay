@@ -17,7 +17,6 @@ export default function WishesSection() {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 🔥 Fetch Wishes
   const fetchWishes = async () => {
     try {
       setLoading(true);
@@ -50,7 +49,6 @@ export default function WishesSection() {
     fetchWishes();
   }, []);
 
-  // ✅ Remove duplicate names (keep latest wish)
   const uniqueWishes = Object.values(
     wishes.reduce((acc, wish) => {
       acc[wish.name.toLowerCase()] = wish; // overwrite → latest stays
@@ -63,11 +61,9 @@ export default function WishesSection() {
       id="wishes"
       className="relative w-full bg-[#050816] py-20 text-white overflow-hidden"
     >
-      {/* Background Glow */}
       <div className="pointer-events-none absolute left-1/3 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-fuchsia-600/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-        {/* Header */}
         <div className="mb-12 text-center">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-4 py-1.5 text-xs text-fuchsia-300 backdrop-blur-xl">
             <Heart className="h-3.5 w-3.5 text-pink-400" />
@@ -91,7 +87,6 @@ export default function WishesSection() {
           </button>
         </div>
 
-        {/* Loading */}
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
@@ -137,7 +132,6 @@ export default function WishesSection() {
         )}
       </div>
 
-      {/* Modal */}
       <InputWishModal
         isOpen={isModalOpen}
         onClose={() => {

@@ -37,11 +37,9 @@ const journeySteps = [
 export default function CodingJourney() {
   return (
     <section id="journey" className="relative w-full bg-[#050816] py-20 text-white overflow-hidden">
-      {/* Background Glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-125 w-125 rounded-full bg-violet-600/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-5xl px-6 sm:px-10">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-xl">
             <Sparkles className="h-3.5 w-3.5 text-violet-400" />

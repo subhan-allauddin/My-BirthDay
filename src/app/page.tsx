@@ -10,8 +10,12 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <CountdownCard targetDate="2026-07-28T00:00:00" />
-      <AboutMe />
+        <CountdownCard targetDate="2026-07-28T00:00:00" />
+
+      <div className="hidden md:block">
+              <AboutMe />
+      </div>
+
       <div id="journey">
         <CodingJourney />
       </div>
