@@ -2,45 +2,81 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Sparkles, X, Send, User, MessageSquareQuote } from "lucide-react";
-import { triggerConfetti } from "@/lib/confetti";
-
-interface InputWishModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onWishCreated?: (newWish: any) => void;
-}
+import {
+  Heart,
+  Sparkles,
+  X,
+  Send,
+  User,
+  MessageSquareQuote,
+} from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function InputWishModal({
   isOpen,
   onClose,
-  onWishCreated,
-}: InputWishModalProps) {
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false); // Ye zaroori tha
+  const [error, setError] = useState<string | null>(null); // Ye bhi zaroori tha
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  
-  try {
-    const res = await fetch("/api/wishes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, message }),
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null); // Puraane errors clear karne ke liye
 
-    if (res.ok) {
-      triggerConfetti();
-      
-      onClose();
+    try {
+      const res = await fetch("/api/wishes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, message }),
+      });
+
+      if (res.ok) {
+        // Success Toast
+        toast.success(
+          "Your wish is going to pending! ⏳ It will be visible after review.",
+          {
+            duration: 5000,
+            style: {
+              background: "#333",
+              color: "#fff",
+              border: "1px solid #a855f7",
+            },
+            icon: "💌",
+          },
+        );
+
+        setIsSubmitted(true); // Success screen dikhane ke liye
+        
+        // Form clear karein
+        setName("");
+        setMessage("");
+
+        // 2 second baad modal khud band ho jayega taake user success animation dekh sake
+        setTimeout(() => {
+          setIsSubmitted(false);
+          onClose();
+        }, 2000);
+
+      } else {
+        setError("Failed to submit wish. Please try again.");
+        toast.error("Failed to submit wish. Please try again.");
+      }
+    } catch (error) {
+      setError("An error occurred. Please check your connection.");
+      toast.error("An error occurred.");
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error(error);
-  }
-};
+  };
+
+  if (!isOpen) return null;
 
   return (
     <AnimatePresence>
@@ -94,10 +130,10 @@ export default function InputWishModal({
                   <Heart className="h-8 w-8 fill-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-white">
-                  Wish Saved to Database!
+                  Wish Saved!
                 </h3>
                 <p className="mt-1 text-xs text-white/60">
-                  Thank you for bringing joy to this celebration! ✨
+                  Thank you! Your wish will be visible after review. ✨
                 </p>
               </motion.div>
             ) : (
