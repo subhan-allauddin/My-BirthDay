@@ -1,9 +1,13 @@
 import confetti from "canvas-confetti";
 
 export const triggerConfetti = () => {
-  const count = 200;
+  if (typeof window === "undefined") return;
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
+  const count = 160;
   const defaults = {
     origin: { y: 0.7 },
+    disableForReducedMotion: true,
   };
 
   function fire(particleRatio: number, opts: confetti.Options) {

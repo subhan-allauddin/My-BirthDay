@@ -8,24 +8,14 @@ import ProjectsSection from "./components/home_page_components/ProjectsSection";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <HeroSection />
-        <CountdownCard targetDate="2026-07-28T00:00:00" />
-
-      <div className="hidden md:block">
-              <AboutMe />
-      </div>
-
-      <div id="journey">
-        <CodingJourney />
-      </div>
-
-      <div id="projects">
-        <ProjectsSection />
-      </div>
-
+      <CountdownCard />
+      <AboutMe />
+      <CodingJourney />
+      <ProjectsSection />
       <WishesSection />
       <Footer />
-    </>
+    </main>
   );
 }
